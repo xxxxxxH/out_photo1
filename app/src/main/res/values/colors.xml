@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#666464</color>
+    <color name="colorPrimaryDark">#383636</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="black">#000</color>
+    <color name="white">#ffffff</color>
+
+    <color name="tab_color">#292929</color>
+
+    <color name="textColorPrimary">#FFFFFB</color>
+    <color name="overlay">#AA1C1C1C</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="black_overlay1">#383737</color>
+
+    <color name="progress_background">#0D000000</color>
+
+    <color name="seek_grey">#C4C1C1</color>
+
+    <color name="seekprogress_color">#F7C600</color>
+    <color name="seekindicator_color">#016080</color>
+    <color name="seekthumb_color">#F7C600</color>
+    <color name="seektick_texts_color">#FFFFFF</color>
+    <color name="yellowcolor">#F7C600</color>
+    <color name="greycolor">#828282</color>
+    <color name="backgrndcolor">#E7E4E4</color>
 </resources>

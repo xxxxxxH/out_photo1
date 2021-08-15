@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/editor_bg">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:id="@+id/main_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/homeicon" />
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/iv_pipcamera"
+                        android:layout_width="300dp"
+                        android:layout_height="150dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/pip" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/iv_color"
+                        android:layout_width="300dp"
+                        android:layout_height="150dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/color" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/iv_bokeh"
+                        android:layout_width="300dp"
+                        android:layout_height="150dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/bokeh" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/iv_pixel"
+                        android:layout_width="300dp"
+                        android:layout_height="150dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/pixel" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/iv_shattering"
+                        android:layout_width="300dp"
+                        android:layout_height="150dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/shattering" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
