@@ -43,6 +43,7 @@ public static DrawableSticker TEXT_DRAWABLE;
     public static int camera_activity_flag = 0;
     public static int screenWidth = 0;
     public static int screenHeight = 0;
+    public static String imageUrl;
     public class KEYNAME {
         public static final String ALBUM_ID = "album_id";
         public static final String ALBUM_NAME = "album_name";

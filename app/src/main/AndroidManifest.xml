@@ -23,10 +23,21 @@
         <activity android:name=".PrivacyPolicyScreen" />
         <activity android:name=".GalleryActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".FaceActivity" />
-        <activity android:name=".GalleryPixelActivity" />
-        <activity android:name=".FaceActivitypip" />
-        <activity android:name=".AlbumImagesActivity" />
+        <activity android:name=".FaceActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".GalleryPixelActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".FaceActivitypip"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".AlbumImagesActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".AlbumImagesActivitpip"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".CropImageActivitypip" />
+        <activity android:name=".CropImageActivity" />
+        <activity android:name=".AlbumImagesPixelActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".CropImagePixelActivity" />
     </application>
     <uses-configuration android:reqTouchScreen="finger" />
 
