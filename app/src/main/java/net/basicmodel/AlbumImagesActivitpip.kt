@@ -10,7 +10,15 @@ import net.adapter.PhoneAlbumImagesAdapterpip
 import net.utils.Share
 
 class AlbumImagesActivitpip:AppCompatActivity() {
-    var activity: Activity? = null
+    companion object {
+        @JvmStatic
+        var activity = this
+        fun finish(){
+            finish()
+        }
+    }
+
+
     private var gridLayoutManager: GridLayoutManager? = null
     private var albumAdapter: PhoneAlbumImagesAdapterpip? = null
 

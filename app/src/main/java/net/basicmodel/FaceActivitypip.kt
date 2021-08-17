@@ -9,6 +9,13 @@ import kotlinx.android.synthetic.main.activity_facepip.*
 import net.fragment.PhotoFragmentpip
 
 class FaceActivitypip:AppCompatActivity() {
+
+    companion object{
+        fun finish(){
+            finish()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_facepip)

@@ -1,5 +1,6 @@
 package net.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -35,16 +36,14 @@ public class PhoneAlbumAdapterpip extends RecyclerView.Adapter<PhoneAlbumAdapter
     Context context;
     ArrayList<String> al_image = new ArrayList<> ();
     private List<PhoneAlbum> al_album = new ArrayList<> ();
-    AppCompatActivity activity;
+    String flag;
+    Activity activity;
 
-    public void setActivity(AppCompatActivity activity) {
-        this.activity = activity;
-    }
-
-    public PhoneAlbumAdapterpip(Context context, Vector<PhoneAlbum> al_album) {
+    public PhoneAlbumAdapterpip(Context context, Vector<PhoneAlbum> al_album,Activity activity) {
 
         this.context = context;
         this.al_album = al_album;
+        this.activity = activity;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -79,12 +78,12 @@ public class PhoneAlbumAdapterpip extends RecyclerView.Adapter<PhoneAlbumAdapter
                 for (int i = 0; i < al_album.get(position).getAlbumPhotos().size(); i++) {
                     al_image.add(al_album.get(position).getAlbumPhotos().get(i).getPhotoUri());
                 }
-                Log.e("TAG", "acrtivity from1111:==>" + ((FaceActivitypip)activity).getIntent().hasExtra("activity"));
+                Log.e("TAG", "acrtivity from1111:==>" + activity.getIntent().hasExtra("activity"));
 
                 Intent intent = new Intent (context, AlbumImagesActivitpip.class);
                 intent.putStringArrayListExtra("image_list", al_image);
                 intent.putExtra(Share.KEYNAME.ALBUM_NAME, al_album.get(position).getName());
-                if (((FaceActivitypip)activity).getIntent().hasExtra("activity")) {
+                if (activity.getIntent().hasExtra("activity")) {
                     intent.putExtra("activity", "PhotoAlbum");
                 }
                 context.startActivity(intent);

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.fragment_photo.*
 import net.adapter.PhoneAlbumAdapterpip
+import net.basicmodel.FaceActivitypip
 import net.basicmodel.R
 import net.entity.PhoneAlbum
 import net.entity.PhonePhoto
@@ -45,9 +46,9 @@ class PhotoFragmentpip:Fragment() {
     private fun initView(){
         val gridLayoutManager = GridLayoutManager(activity, 2)
         rcv_album.layoutManager = gridLayoutManager
-        val albumAdapter = PhoneAlbumAdapterpip(activity, phoneAlbums)
+        val albumAdapter = PhoneAlbumAdapterpip(activity, phoneAlbums, activity)
         rcv_album.adapter = albumAdapter
-        albumAdapter.setActivity(activity as AppCompatActivity?)
+//        albumAdapter.setActivity(activity as FaceActivitypip?)
     }
 
     private fun initViewAction() {

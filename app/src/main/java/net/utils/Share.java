@@ -1,10 +1,17 @@
 package net.utils;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import net.utils.*;
 import net.widget.DrawableSticker;
@@ -49,5 +56,38 @@ public static DrawableSticker TEXT_DRAWABLE;
         public static final String ALBUM_NAME = "album_name";
         public static final String SELECTED_IMAGE = "selected_image";
         public static final String SELECTED_PHONE_IMAGE = "selected_phone_image";
+    }
+
+    public static Boolean Flag_First = true;
+    public static Activity Activity_Gallery_View;
+    public static String imgs = "";
+
+    public static String saveFaceInternalStorage(Context context, Bitmap bitmapImage) {
+        ContextWrapper cw = new ContextWrapper(context);
+
+
+        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+
+        if (bitmapImage != null) {
+            File mypath = new File(directory, "profile.png");
+            Log.e("TAG", "" + mypath);
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(mypath);
+
+                bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            Log.e("TAG", "Not Saved Image------------------------------------------------------->");
+        }
+        return directory.getAbsolutePath();
     }
 }

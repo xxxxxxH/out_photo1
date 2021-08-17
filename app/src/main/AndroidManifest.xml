@@ -33,7 +33,8 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".AlbumImagesActivitpip"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".CropImageActivitypip" />
+        <activity android:name=".CropImageActivitypip"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CropImageActivity" />
         <activity android:name=".AlbumImagesPixelActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
