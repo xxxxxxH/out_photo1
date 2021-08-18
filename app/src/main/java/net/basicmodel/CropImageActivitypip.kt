@@ -13,8 +13,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import net.event.MessageEvent
 import net.fragment.MainFragmentpip
 import net.utils.Share
+import org.greenrobot.eventbus.EventBus
 import java.io.File
 
 class CropImageActivitypip:AppCompatActivity() {
@@ -82,8 +84,9 @@ class CropImageActivitypip:AppCompatActivity() {
     }
 
     fun startResultActivity(uri: Bitmap?) {
-        if (AlbumImagesActivitpip.activity != null) AlbumImagesActivitpip.finish()
-        if (FaceActivitypip != null) FaceActivitypip.finish()
+//        if (AlbumImagesActivitpip.activity != null) AlbumImagesActivitpip.finish()
+//        if (FaceActivitypip != null) FaceActivitypip.finish()
+        EventBus.getDefault().post(MessageEvent("finish"))
         val cropfile: String = Share.saveFaceInternalStorage(this, uri)
         jump(cropfile)
     }

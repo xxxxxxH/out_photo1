@@ -2,11 +2,16 @@ package net.basicmodel
 
 import android.graphics.Color
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.activity_facepip.*
+import net.event.MessageEvent
 import net.fragment.PhotoFragmentpip
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class FaceActivitypip:AppCompatActivity() {
 
@@ -19,8 +24,17 @@ class FaceActivitypip:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_facepip)
+        EventBus.getDefault().register(this)
         initView()
         initViewAction()
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public fun onEvent(event: MessageEvent) {
+        val msg =event.getMessage()[0] as String
+        if (TextUtils.equals(msg,"finish")){
+            finish()
+        }
     }
 
 

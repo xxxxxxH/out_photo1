@@ -39,6 +39,8 @@
         <activity android:name=".AlbumImagesPixelActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".CropImagePixelActivity" />
+        <activity android:name=".BokehEffectActivity" />
+        <activity android:name=".PixelEffectPixelActivity" />
     </application>
     <uses-configuration android:reqTouchScreen="finger" />
 

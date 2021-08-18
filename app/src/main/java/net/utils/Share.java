@@ -61,7 +61,8 @@ public static DrawableSticker TEXT_DRAWABLE;
     public static Boolean Flag_First = true;
     public static Activity Activity_Gallery_View;
     public static String imgs = "";
-
+    public static String msg;
+    public static boolean is_home_back = false;
     public static String saveFaceInternalStorage(Context context, Bitmap bitmapImage) {
         ContextWrapper cw = new ContextWrapper(context);
 

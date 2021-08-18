@@ -3,11 +3,16 @@ package net.basicmodel
 import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_albumimagespip.*
 import net.adapter.PhoneAlbumImagesAdapterpip
+import net.event.MessageEvent
 import net.utils.Share
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class AlbumImagesActivitpip:AppCompatActivity() {
     companion object {
@@ -25,8 +30,22 @@ class AlbumImagesActivitpip:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_albumimagespip)
+        EventBus.getDefault().register(this)
         setToolbars()
         initViews()
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public fun onEvent(event: MessageEvent) {
+        val msg =event.getMessage()[0] as String
+        if (TextUtils.equals(msg,"finish")){
+            finish()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
     }
 
     private fun initViews(){
