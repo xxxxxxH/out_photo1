@@ -8,6 +8,7 @@ import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import java.io.File;
@@ -26,6 +28,8 @@ import java.util.ArrayList;
 import net.basicmodel.R;
 import net.utils.*;
 import net.widget.DrawableSticker;
+import net.widget.DrawableStickerPixel;
+import net.widget.StickerPixel;
 
 public class Share {
 
@@ -62,6 +66,10 @@ public static DrawableSticker TEXT_DRAWABLE;
     public static int screenWidth = 0;
     public static int screenHeight = 0;
     public static String imageUrl;
+    public static boolean IsSelectFrame = false;
+    public static DrawableStickerPixel TEXT_DRAWABLE1;
+
+    public static ArrayList<View> View_List_Sticker = new ArrayList<> ();
     public class KEYNAME {
         public static final String ALBUM_ID = "album_id";
         public static final String ALBUM_NAME = "album_name";
@@ -77,6 +85,14 @@ public static DrawableSticker TEXT_DRAWABLE;
     public static final String IMAGE_PATH = Environment.getExternalStorageDirectory().getPath() + File.separator + "Photo Editor";
     public static String Fragment = "MyPhotosFragmen" + "t";
     public static Fragment selectedFragment;
+    public static int IMG_HEIGHT = 0;
+    public static int IMG_WIDTH = 0;
+    public static boolean isFrameAvailable = false;
+    public static String BG_COLOR = "#FFFFFF";
+    public static Drawable EFFECT_DRAWABLE = null;
+    public static int flag = 0;
+    public static int COLOR_POS = 0;
+    public static ArrayList<StickerPixel> drawable_list = new ArrayList<> ();
     public static String saveFaceInternalStorage(Context context, Bitmap bitmapImage) {
         ContextWrapper cw = new ContextWrapper(context);
 
@@ -145,5 +161,14 @@ public static DrawableSticker TEXT_DRAWABLE;
         mDialog.setCancelable(false);
 
         return mDialog;
+    }
+
+    public static void showAlert(final Activity activity, String title, String message) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity, R.style.MyAlertDialog);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("OK", null);
+        builder.show();
     }
 }

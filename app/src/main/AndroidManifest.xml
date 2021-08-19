@@ -42,6 +42,7 @@
         <activity android:name=".BokehEffectActivity" />
         <activity android:name=".PixelEffectPixelActivity" />
         <activity android:name=".FullScreenImageActivity" />
+        <activity android:name=".FontPixelActivity" />
     </application>
     <uses-configuration android:reqTouchScreen="finger" />
 
