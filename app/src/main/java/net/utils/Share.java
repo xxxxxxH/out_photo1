@@ -1,18 +1,29 @@
 package net.utils;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Environment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import net.basicmodel.R;
 import net.utils.*;
 import net.widget.DrawableSticker;
 
@@ -63,6 +74,9 @@ public static DrawableSticker TEXT_DRAWABLE;
     public static String imgs = "";
     public static String msg;
     public static boolean is_home_back = false;
+    public static final String IMAGE_PATH = Environment.getExternalStorageDirectory().getPath() + File.separator + "Photo Editor";
+    public static String Fragment = "MyPhotosFragmen" + "t";
+    public static Fragment selectedFragment;
     public static String saveFaceInternalStorage(Context context, Bitmap bitmapImage) {
         ContextWrapper cw = new ContextWrapper(context);
 
@@ -90,5 +104,46 @@ public static DrawableSticker TEXT_DRAWABLE;
             Log.e("TAG", "Not Saved Image------------------------------------------------------->");
         }
         return directory.getAbsolutePath();
+    }
+
+    public static ProgressDialog createProgressDialog(Context mContext) {
+        ProgressDialog dialog = new ProgressDialog(mContext, R.style.MyTheme);
+        try {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+                createProgressDialog(mContext);
+            } else {
+                dialog.show();
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setProgressDrawable((new ColorDrawable(Color.parseColor("#E45E46"))));
+        dialog.setContentView(R.layout.progress_dialog_layout);
+        return dialog;
+    }
+
+    public static Dialog showProgress(Context mContext, String text) {
+
+        Dialog mDialog = new Dialog(mContext, R.style.MyTheme);
+        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        LayoutInflater mInflater = LayoutInflater.from(mContext);
+        View layout = mInflater.inflate(R.layout.dialog_progress, null);
+        mDialog.setContentView(layout);
+
+        TextView mTextView = (TextView) layout.findViewById(R.id.text);
+        if (text.equals(""))
+            mTextView.setVisibility(View.GONE);
+        else
+            mTextView.setText(text);
+
+        mDialog.setCancelable(false);
+
+        return mDialog;
     }
 }

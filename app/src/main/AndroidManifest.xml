@@ -41,6 +41,7 @@
         <activity android:name=".CropImagePixelActivity" />
         <activity android:name=".BokehEffectActivity" />
         <activity android:name=".PixelEffectPixelActivity" />
+        <activity android:name=".FullScreenImageActivity" />
     </application>
     <uses-configuration android:reqTouchScreen="finger" />
 
