@@ -589,10 +589,10 @@ class MainFragmentPixel:Fragment() {
         }
     }
     fun showProgress() {
-//        val f: ProgressDialogFragment = ProgressDialogFragment.getInstance()
-//        fragmentManager?.beginTransaction()
-//            ?.add(f, PROGRESS_DIALOG)
-//            ?.commitAllowingStateLoss()
+        val f: ProgressDialogFragment = ProgressDialogFragment().getInstance()
+        fragmentManager?.beginTransaction()
+            ?.add(f, PROGRESS_DIALOG)
+            ?.commitAllowingStateLoss()
     }
 
     fun dismissProgress() {

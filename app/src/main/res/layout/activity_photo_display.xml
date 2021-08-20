@@ -1,0 +1,1092 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgrndcolor"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/AppTheme"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:contentInsetEnd="0dp"
+                android:contentInsetRight="0dp"
+                app:contentInsetEnd="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetStart="0dp"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/black">
+
+                    <ImageView
+                        android:id="@+id/iv_back"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="5dp"
+
+                        android:src="@mipmap/ic_header_back"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="PIP Photo Editor"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textColor="@android:color/white"
+                        android:textSize="15dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_done"
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="8dp"
+                        android:src="@mipmap/ic_done" />
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginBottom="100dp"
+        android:background="@color/backgrndcolor"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:id="@+id/frame_01_watch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:visibility="visible">
+
+
+                <RelativeLayout
+                    android:id="@+id/center_image_layout_01"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <!-- <ImageView
+                                 android:id="@+id/setframe"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:layout_centerInParent="true"
+                                  />-->
+
+
+                            <net.widget.TouchImageView
+                                android:id="@+id/bg_image_display"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:adjustViewBounds="true"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/appicon" />
+
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout01"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop" />
+                                    <!-- android:scaleType="fitXY"
+                                     android:adjustViewBounds="true"-->
+
+
+                                </net.widget.MaskableFrameLayout>
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout02"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    app:porterduffxfermode="DST_IN">
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_02"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop" />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout03"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_03"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop" />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout4"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout04"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_04"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop" />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout5"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout05"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_05"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop"
+
+                                        />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout6"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout06"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_06"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop" />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout7"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout07"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_07"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop" />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout8"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout08"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_08"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop"
+
+                                        />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout9"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout09"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_09"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop" />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout10"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_10"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop" />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout11"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout11"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_11"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop" />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout12"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout12"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_12"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop" />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout13"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout13"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_13"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop" />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout14"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout14"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_14"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop" />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout15"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout15"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_15"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop"
+
+                                        />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout16"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout16"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_16"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop" />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout17"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout17"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_17"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop" />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frame_layout18"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="gone">
+
+                                <net.widget.MaskableFrameLayout
+                                    android:id="@+id/maskable_layout18"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:porterduffxfermode="DST_IN">
+
+
+                                    <net.widget.TouchImageView
+                                        android:id="@+id/image_display_18"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop" />
+
+                                </net.widget.MaskableFrameLayout>
+
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:id="@+id/frame_watch_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:id="@+id/watch_img"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/frame_watch" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_glass_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_glass"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:src="@mipmap/frame_glass" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_03_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_03"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:src="@mipmap/frame_003" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_04_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_04"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:src="@mipmap/frame_004" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_05_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_05"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:src="@mipmap/frame_005" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_06_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_06"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:src="@mipmap/frame_006" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_07_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_07"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:src="@mipmap/frame_007" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_08_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_08"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/frame_008" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_09_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_09"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:src="@mipmap/frame_009" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_10_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/frame_010" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_11_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_11"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:src="@mipmap/frame_0111" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_12_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_12"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/frame_0122" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_13_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_13"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/frame_0133" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_14_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_14"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:src="@mipmap/frame_0144" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_15_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_15"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:src="@mipmap/frame_0155" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_16_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_16"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/frame_0166" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/frame_17_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_17"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/frame_0177" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/frame_18_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:visibility="invisible">
+
+                                <ImageView
+                                    android:id="@+id/frame_18"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/frame_0188" />
+
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <net.widget.StickerViewPip
+                            android:id="@+id/sticker_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:visibility="gone">
+
+                        </net.widget.StickerViewPip>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/iv_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="right|bottom"
+                android:background="@color/white"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="5dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@mipmap/cancle" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/all_menu_with_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/rl_background"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:visibility="visible">
+
+            <HorizontalScrollView
+                android:id="@+id/hv_scroll_frames"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/ll_row_frames"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp">
+
+                </LinearLayout>
+
+                <!-- <GridView
+                     android:id="@+id/ll_row_frame_grid"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:numColumns="18"
+                     android:columnWidth="70dp"
+                     android:stretchMode="columnWidth"
+                     ></GridView>-->
+            </HorizontalScrollView>
+
+
+            <HorizontalScrollView
+                android:id="@+id/hv_scroll_bg_effect"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_no_effect_background"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/whiteborder"
+                        android:padding="1dp"
+                        android:src="@mipmap/fr0" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_row_bg_effect"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:id="@+id/hv_scroll_foreground_effect"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_no_effect_foreground"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/whiteborder"
+                        android:padding="1dp"
+                        android:src="@mipmap/fr0" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_row_foreground_effect"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:id="@+id/hv_scroll_sticker"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/ll_row_sticker"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp">
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_menu"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/pip"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginLeft="15dp"
+                android:src="@mipmap/pip1" />
+
+            <ImageView
+                android:id="@+id/background"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:src="@mipmap/opposite2" />
+
+            <ImageView
+                android:id="@+id/foreground"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_weight="1"
+                android:src="@mipmap/opposite" />
+
+            <ImageView
+                android:id="@+id/sticker"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_weight="1"
+                android:src="@mipmap/sticker" />
+
+            <ImageView
+                android:id="@+id/option"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_weight="1"
+                android:src="@mipmap/add" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

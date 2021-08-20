@@ -76,7 +76,7 @@ class MainFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        if (cropImageView.getImageBitmap() == null) {
+        if (cropImageView.imageBitmap == null) {
             if (Share.BG_GALLERY != null && !Share.BG_GALLERY.equals("")) {
                 Glide.with(this)
                     .load(Share.BG_GALLERY)

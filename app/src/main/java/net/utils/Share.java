@@ -1,10 +1,13 @@
 package net.utils;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -18,6 +21,7 @@ import android.view.Window;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import java.io.File;
@@ -93,6 +97,29 @@ public static DrawableSticker TEXT_DRAWABLE;
     public static int flag = 0;
     public static int COLOR_POS = 0;
     public static ArrayList<StickerPixel> drawable_list = new ArrayList<> ();
+    public static int my_photos_position = 0;
+    public static int my_favourite_position = 0;
+    public static String image_path;
+    public static Bitmap SELECTED_BITMAP;
+    public static ArrayList<File> al_my_photos_photo = new ArrayList<>();
+    public static ArrayList<File> al_my_photos_favourite = new ArrayList<>();
+    public static Bitmap bitmapPhoto = null;
+    public static Bitmap IMAGE_BITMAP_BACKGROUND_1;
+    public static Bitmap image_bg = null;
+    public static Bitmap image_fg = null;
+    public static Bitmap IMAGE_BITMAP_BACKGROUND;
+    public static Bitmap bitmapPhoto_background = null;
+    public static int no_select_image = 1;
+    public static int image_flag = 1;
+    public static Bitmap IMAGE_BITMAP_1;
+    public static int camera_flag = 0;
+    public static Bitmap b = null;
+    public static ArrayList<View> View_List_Effects_Background = new ArrayList<>();
+    public static int effect_flag_bg = 0;
+    public static int effect_flag_fg = 0;
+    public static Bitmap SAVED_IMAGE = null;
+    public static int resume_flag = 0;
+    public static int last_posi = 0;
     public static String saveFaceInternalStorage(Context context, Bitmap bitmapImage) {
         ContextWrapper cw = new ContextWrapper(context);
 
@@ -170,5 +197,28 @@ public static DrawableSticker TEXT_DRAWABLE;
         builder.setMessage(message);
         builder.setPositiveButton("OK", null);
         builder.show();
+    }
+
+    public static Boolean RestartApp(Activity activity) {
+
+        if (!Share.checkAndRequestPermissionss(activity, 1)) {
+            Intent i = activity.getBaseContext().getPackageManager()
+                    .getLaunchIntentForPackage(activity.getBaseContext().getPackageName());
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            activity.startActivity(i);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public static boolean checkAndRequestPermissionss(Activity act, int code) {
+
+        if (ContextCompat.checkSelfPermission(act, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(act, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
