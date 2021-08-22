@@ -8,15 +8,20 @@ import android.widget.ImageView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-
+import net.basicmodel.R;
 import net.entity.StickerModel;
+import net.event.MessageEvent;
+import net.utils.Share;
+import net.widget.DrawableStickerPixel;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 
 public class StickerPixelAdapter extends RecyclerView.Adapter<StickerPixelAdapter.MyViewHolder> {
 
-    private ArrayList<StickerModel> stickerModelArrayList = new ArrayList<> ();
-    private Context context;
+    private ArrayList<StickerModel> stickerModelArrayList = new ArrayList<>();
+    private final Context context;
 
     public StickerPixelAdapter(Context context, ArrayList<StickerModel> list) {
         this.context = context;
@@ -28,7 +33,7 @@ public class StickerPixelAdapter extends RecyclerView.Adapter<StickerPixelAdapte
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            iv_sticker = (ImageView) itemView.findViewById(R.id.iv_sticker);
+            iv_sticker = itemView.findViewById(R.id.iv_sticker);
         }
     }
 
@@ -52,7 +57,8 @@ public class StickerPixelAdapter extends RecyclerView.Adapter<StickerPixelAdapte
 
                     DrawableStickerPixel drawableSticker = new DrawableStickerPixel(stickerModelArrayList.get(position).getDrawable());
                     drawableSticker.setTag("cartoon");
-                    PixelEffectPixelActivity.stickerView.addSticker(drawableSticker);
+//                    PixelEffectPixelActivity.stickerView.addSticker(drawableSticker);
+                    EventBus.getDefault().post(new MessageEvent(drawableSticker, "addSticker"));
                     Share.IsSelectFrame = false;
 
                 } catch (Exception e) {

@@ -17,6 +17,7 @@ import android.net.Uri
 import android.os.AsyncTask
 import android.os.Bundle
 import android.provider.Settings
+import android.text.TextUtils
 import android.util.Log
 import android.view.*
 import android.view.animation.Animation
@@ -30,11 +31,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_pixel_effect.*
 import net.adapter.StickerPixelAdapter
 import net.entity.StickerModel
+import net.event.MessageEvent
 import net.utils.DisplayMetricsHandler
 import net.utils.Share
 import net.widget.CircularProgressBar
 import net.widget.DrawableStickerPixel
 import net.widget.ImagePicker
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -43,6 +48,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class PixelEffectPixelActivity : AppCompatActivity() {
+
     val STORAGE_PERMISSION_CODE = 23
     val STORAGE_PERMISSION_CODE_CAMERA = 22
     private val REQUEST_SETTINGS_PERMISSION = 102
@@ -68,10 +74,20 @@ class PixelEffectPixelActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pixel_effect)
+        EventBus.getDefault().register(this)
         Share.screenWidth = windowManager.defaultDisplay.width
         Share.screenHeight = windowManager.defaultDisplay.height
         initView()
         onclick()
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onEvent(event: MessageEvent) {
+        val msg = event.getMessage()[0] as String
+        val drawableSticker: DrawableStickerPixel = event.getStickerPixel()
+        if (TextUtils.equals(msg, "addSticker")) {
+            stickerView.addSticker(drawableSticker)
+        }
     }
 
     override fun onResume() {
@@ -1034,6 +1050,7 @@ class PixelEffectPixelActivity : AppCompatActivity() {
         Runtime.getRuntime().gc()
 
         isInForeGround = false
+        EventBus.getDefault().unregister(this)
     }
 
     override fun onStop() {
