@@ -3,6 +3,7 @@ package net.basicmodel
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -21,6 +22,7 @@ class GalleryPixelActivity:AppCompatActivity() {
         EventBus.getDefault().register(this)
         setToolbar()
         initViewAction()
+        Log.i("xxxxxxH", "GalleryPixelActivity")
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

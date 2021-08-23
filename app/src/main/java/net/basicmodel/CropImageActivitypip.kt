@@ -33,6 +33,7 @@ class CropImageActivitypip:AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .add(R.id.container, MainFragmentpip().getInstance()).commit()
         }
+        Log.i("xxxxxxH", "CropImageActivitypip")
     }
 
     override fun onRequestPermissionsResult(

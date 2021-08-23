@@ -4,6 +4,7 @@ import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_albumimagespip.*
@@ -33,6 +34,7 @@ class AlbumImagesActivitpip:AppCompatActivity() {
         EventBus.getDefault().register(this)
         setToolbars()
         initViews()
+        Log.i("xxxxxxH","AlbumImagesActivitpip")
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

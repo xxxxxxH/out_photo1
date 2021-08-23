@@ -38,6 +38,7 @@ class CropImageActivity:AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .add(R.id.container, MainFragment().getInstance()).commit()
         }
+        Log.i("xxxxxxH", "CropImageActivity")
     }
 
     fun startResultActivity(uri: Bitmap?) {

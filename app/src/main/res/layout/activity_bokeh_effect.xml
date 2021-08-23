@@ -95,7 +95,7 @@
                     android:alpha="0.7"
                     android:visibility="visible" />
 
-                <StickerView
+                <net.widget.StickerView
                     android:id="@+id/stickerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

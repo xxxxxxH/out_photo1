@@ -152,6 +152,7 @@ public class BokehEffectActivity extends AppCompatActivity implements View.OnCli
         Share.screenHeight = getWindowManager().getDefaultDisplay().getHeight();
         initView();
         Log.e("TAG", "Share.fromCamera--->: " + Share.fromCamera);
+        Log.i("xxxxxxH","BokehEffectActivity");
     }
 
     @Override
@@ -405,9 +406,9 @@ public class BokehEffectActivity extends AppCompatActivity implements View.OnCli
             txttext.setTextColor(getResources().getColor(R.color.yellowcolor));
             txtsticker.setTextColor(getResources().getColor(R.color.greycolor));
 
-//            Intent i = new Intent(BokehEffectActivity.this, FontActivity.class);
-//            startActivity(i);
-//            overridePendingTransition(R.anim.right_in, R.anim.left_out);
+            Intent i = new Intent(BokehEffectActivity.this, FontActivity.class);
+            startActivity(i);
+            overridePendingTransition(R.anim.right_in, R.anim.left_out);
 
         } else if (v == iv_effect) {
 
@@ -1186,6 +1187,7 @@ public class BokehEffectActivity extends AppCompatActivity implements View.OnCli
         super.onStop();
         isInForeGround = false;
     }
+
 
     @Override
     public void onBackPressed() {

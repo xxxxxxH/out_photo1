@@ -17,10 +17,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import kotlinx.android.synthetic.main.activity_my_photos.*
 import kotlinx.android.synthetic.main.fragment_my_photo.*
 import net.adapter.MyPhotosAdapter
 import net.basicmodel.FullScreenImageActivity
+import net.basicmodel.MyPhotosActivity
 import net.basicmodel.R
 import net.database.DBAdapter
 import net.utils.Share
@@ -44,7 +44,7 @@ class MyPhotosFragment : Fragment() {
 
     //    ImageView iv_all_delete;
     var posi = 0
-//    var iv_all_delete: ImageView? = null
+    var iv_all_delete: ImageView? = null
     private val listPermissionsNeeded: ArrayList<String> = ArrayList()
 
     fun newInstance(): MyPhotosFragment {
@@ -64,6 +64,7 @@ class MyPhotosFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        iv_all_delete = (activity as MyPhotosActivity).findViewById(R.id.iv_all_delete) as ImageView
         if (checkAndRequestPermissions()) {
             dbAdapter = DBAdapter(activity)
             gridLayoutManager = GridLayoutManager(activity, 2)

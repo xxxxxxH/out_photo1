@@ -9,8 +9,6 @@ import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -28,10 +26,10 @@ import kotlinx.android.synthetic.main.activity_font.*
 import net.adapter.FontAdapter
 import net.entity.FontModel
 import net.utils.Share
-import net.widget.DrawableStickerPixel
+import net.widget.DrawableSticker
 import java.util.*
 
-class FontPixelActivity : AppCompatActivity() {
+class FontActivity :AppCompatActivity() {
     private var fontAdapter: FontAdapter? = null
     private val list: ArrayList<FontModel> = ArrayList<FontModel>()
     private val font_array = arrayOf(
@@ -64,106 +62,80 @@ class FontPixelActivity : AppCompatActivity() {
         "youmurdererbb"
     )
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_font)
-        Log.i("xxxxxxH", "FontPixelActivity")
-        rv_font.layoutManager = LinearLayoutManager(
-            this,
-            LinearLayoutManager.HORIZONTAL,
-            true
-        )
-        rv_font.layoutParams.height = Share.screenHeight - toolbar_top.height - ll_font_color.height
-
-        et_text.setOnEditorActionListener { v, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                val imm =
-                    v!!.context.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(v.windowToken, 0)
-            }
-            false
-        }
-
-        et_text.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (et_text.text.toString() == "") {
-                    et_text.setText("")
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-
-        })
-
         initView()
         onclick()
     }
 
-    private fun initView() {
+    private fun initView(){
+        rv_font.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true)
+
+        rv_font.layoutParams.height =Share.screenHeight - toolbar_top.height - ll_font_color.height
+
+        et_text.setOnEditorActionListener { p0, p1, p2 ->
+            if (p1 == EditorInfo.IME_ACTION_DONE) {
+                val imm =
+                    p0!!.context.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(p0.windowToken, 0)
+            }
+            false
+        }
+
         for (i in font_array.indices) {
             val spinnerModel = FontModel()
             spinnerModel.font_name = font_array[i]
             list.add(spinnerModel)
         }
 
-
-        fontAdapter = FontAdapter(this@FontPixelActivity, list)
+        fontAdapter = FontAdapter(this@FontActivity, list)
         rv_font.adapter = fontAdapter
 
         fontAdapter!!.eventListener = object : FontAdapter.EventListener {
             override fun onItemViewClicked(position: Int) {
-                Share.FONT_EFFECT = font_array[position].toLowerCase()
-
+                Share.FONT_EFFECT = font_array[position].toLowerCase(Locale.ROOT)
                 val face = Typeface.createFromAsset(
-                    this@FontPixelActivity.assets,
-                    font_array[position].toLowerCase() + ".ttf"
+                    this@FontActivity.assets,
+                    font_array[position].toLowerCase(Locale.ROOT) + ".ttf"
                 )
                 et_text.typeface = face
             }
 
-            override fun onDeleteMember(position: Int) {
-            }
-
+           override fun onDeleteMember(position: Int) {}
         }
     }
 
-    private fun onclick() {
+    private fun onclick(){
         iv_color.setOnClickListener {
-            val builder = ColorPickerDialog.Builder(
-                this@FontPixelActivity,
-                AlertDialog.THEME_DEVICE_DEFAULT_DARK
-            )
-                .setTitle("Choose Color")
-                .setPreferenceName("Test")
-                .setPositiveButton(
-                    getString(R.string.confirm),
-                    ColorEnvelopeListener { envelope, fromUser ->
-                        et_text.setTextColor(Color.parseColor("#" + envelope.hexCode))
-                        Share.COLOR = Color.parseColor("#" + envelope.hexCode)
-                        et_text.setTextColor(Color.parseColor("#" + envelope.hexCode))
-                        Share.COLOR =
-                            Color.parseColor("#" + envelope.hexCode)
-                    })
-                .setNegativeButton(
-                    "cancel"
-                ) { dialogInterface, i -> dialogInterface.dismiss() }
-
+            val builder =
+                ColorPickerDialog.Builder(this@FontActivity, AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                    .setTitle("ColorPicker Dialog")
+                    .setPreferenceName("Test")
+                    .setPositiveButton(
+                        getString(R.string.confirm),
+                        ColorEnvelopeListener { envelope, fromUser ->
+                            et_text.setTextColor(Color.parseColor("#" + envelope.hexCode))
+                            Share.COLOR = Color.parseColor("#" + envelope.hexCode)
+                            Log.e("TAG", "onColorSelected: " + "#" + envelope.hexCode)
+                            Log.e(
+                                "TAG",
+                                "onColorSelected:---> " + Color.parseColor("#" + envelope.hexCode)
+                            )
+                        })
+                    .setNegativeButton(
+                        "cancel"
+                    ) { dialogInterface, i -> dialogInterface.dismiss() }
+            val colorPickerView = builder.colorPickerView
             builder.show()
         }
         iv_close.setOnClickListener {
-            onBackPressed()
+            finish()
         }
         iv_done.setOnClickListener {
             val str = et_text.text.toString()
 
-            val b2: Bitmap = createBitmapFromLayoutWithText(
+            val b2: Bitmap? = createBitmapFromLayoutWithText(
                 applicationContext,
                 et_text.text.toString(),
                 et_text.currentTextColor,
@@ -178,13 +150,13 @@ class FontPixelActivity : AppCompatActivity() {
                 Share.FONT_FLAG = true
                 Share.FONT_TEXT = et_text.text.toString()
                 finish()
-                overridePendingTransition(R.anim.slide_in_down, R.anim.slide_out_down)
+                overridePendingTransition(R.anim.left_in, R.anim.right_out)
             } else {
                 Toast.makeText(applicationContext, getString(R.string.text_null), Toast.LENGTH_LONG)
                     .show()
             }
 
-            val sticker = DrawableStickerPixel(d)
+            val sticker = DrawableSticker(d)
 
             val face = Typeface.createFromAsset(assets, Share.FONT_EFFECT.toString() + ".ttf")
 
@@ -192,9 +164,8 @@ class FontPixelActivity : AppCompatActivity() {
                 Share.COLOR = resources.getColor(R.color.colorPrimary)
             }
 
-            Share.TEXT_DRAWABLE1 = sticker
+            Share.TEXT_DRAWABLE = sticker
         }
-
     }
 
     fun createBitmapFromLayoutWithText(
@@ -203,9 +174,9 @@ class FontPixelActivity : AppCompatActivity() {
         color: Int,
         i: Int,
         face: Typeface?
-    ): Bitmap {
+    ): Bitmap? {
         val mInflater = context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view: View = mInflater.inflate(R.layout.row_bitmap, null)
+        val view = mInflater.inflate(R.layout.row_bitmap, null)
         val tv = view.findViewById<View>(R.id.tv_custom_text1) as TextView
         var j = 0
         while (j < s.length) {
@@ -246,11 +217,4 @@ class FontPixelActivity : AppCompatActivity() {
         view.draw(c)
         return bitmap
     }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
-        overridePendingTransition(R.anim.slide_in_down, R.anim.slide_out_down)
-    }
-
 }

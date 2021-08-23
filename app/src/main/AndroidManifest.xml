@@ -17,10 +17,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".EditorActivity" />
-        <activity android:name=".MyPhotosActivity" />
-        <activity android:name=".PrivacyPolicyScreen" />
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".EditorActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".MyPhotosActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".PrivacyPolicyScreen"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".GalleryActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".FaceActivity"
@@ -35,14 +39,24 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".CropImageActivitypip"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CropImageActivity" />
+        <activity android:name=".CropImageActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AlbumImagesPixelActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".CropImagePixelActivity" />
-        <activity android:name=".BokehEffectActivity" />
-        <activity android:name=".PixelEffectPixelActivity" />
-        <activity android:name=".FullScreenImageActivity" />
-        <activity android:name=".FontPixelActivity" />
+        <activity android:name=".CropImagePixelActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".BokehEffectActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".PixelEffectPixelActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".FullScreenImageActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".FontPixelActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".PhotoDisplayPipActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".FontActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
     <uses-configuration android:reqTouchScreen="finger" />
 

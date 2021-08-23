@@ -2,6 +2,7 @@ package net.basicmodel
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_album_images1.*
@@ -21,6 +22,7 @@ class AlbumImagesPixelActivity : AppCompatActivity() {
         setContentView(R.layout.activity_album_images1)
         setToolbar()
         initView()
+        Log.i("xxxxxxH","AlbumImagesPixelActivity")
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

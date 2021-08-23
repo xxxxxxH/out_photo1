@@ -68,6 +68,7 @@ class EditorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editor)
         initView()
+        Log.i("xxxxxxH", "EditorActivity")
     }
 
     private fun initView() {

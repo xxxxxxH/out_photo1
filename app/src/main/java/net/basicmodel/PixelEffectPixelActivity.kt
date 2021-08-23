@@ -74,6 +74,7 @@ class PixelEffectPixelActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pixel_effect)
+        Log.i("xxxxxxH", "PixelEffectPixelActivity")
         EventBus.getDefault().register(this)
         Share.screenWidth = windowManager.defaultDisplay.width
         Share.screenHeight = windowManager.defaultDisplay.height
@@ -96,10 +97,10 @@ class PixelEffectPixelActivity : AppCompatActivity() {
             img_main.invalidate()
             img_main.setImageBitmap(null)
             img_main.setImageBitmap(Share.CROPPED_IMAGE)
-            val height = Math.ceil(
-                (Share.screenWidth * img_main.drawable.intrinsicHeight as Float / img_main.drawable.intrinsicWidth).toDouble()
-            )
-                .toInt()
+            val a = (Share.screenWidth * img_main.drawable.intrinsicHeight).toDouble()
+            val b = (img_main.drawable.intrinsicWidth).toDouble()
+            val height = Math.ceil(a / b).toInt()
+
             img_main.layoutParams.height = height
             val vto = img_main.viewTreeObserver
             vto.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
@@ -110,12 +111,11 @@ class PixelEffectPixelActivity : AppCompatActivity() {
 
                     // Manage image width based on height
                     if (height > imgFinalWidth) {
-                        imgFinalWidth = Math.ceil(
-                            (imgFinalHeight * img_main.drawable
-                                .intrinsicWidth as Float / img_main.drawable
-                                .intrinsicHeight).toDouble()
-                        )
-                            .toInt()
+                        val a = (imgFinalHeight * img_main.drawable
+                            .intrinsicWidth).toDouble()
+                        val b = (img_main.drawable
+                            .intrinsicHeight).toDouble()
+                        imgFinalWidth = Math.ceil(a / b).toInt()
                     }
                     img_main.layoutParams.width = imgFinalWidth
                     val RLParams: LinearLayout.LayoutParams =
@@ -557,10 +557,8 @@ class PixelEffectPixelActivity : AppCompatActivity() {
         Arrays.sort(arrayList, object : Comparator<String?> {
 
             override fun compare(p0: String?, p1: String?): Int {
-                val file1 =
-                    p0!!.split(frontStr).toTypedArray()[1].split("\\.").toTypedArray()[0].toInt()
-                val file2 =
-                    p1!!.split(frontStr).toTypedArray()[1].split("\\.").toTypedArray()[0].toInt()
+                val file1 = p0!!.filter { it.isDigit() }
+                val file2 = p1!!.filter { it.isDigit() }
                 return file1.compareTo(file2)
             }
         })

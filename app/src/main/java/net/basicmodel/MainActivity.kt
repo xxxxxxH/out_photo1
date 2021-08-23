@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.multidex.BuildConfig
 import kotlinx.android.synthetic.main.activity_home.*
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         initView()
+        Log.i("xxxxxxH", "MainActivity")
     }
 
     private fun initView() {

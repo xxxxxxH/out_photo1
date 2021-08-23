@@ -3,6 +3,7 @@ package net.basicmodel
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -21,6 +22,7 @@ class GalleryActivity :AppCompatActivity() {
         EventBus.getDefault().register(this)
         setToolbar()
         initViewAction()
+        Log.i("xxxxxxH", "GalleryActivity")
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

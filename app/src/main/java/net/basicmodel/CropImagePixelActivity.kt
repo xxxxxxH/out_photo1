@@ -29,6 +29,7 @@ class CropImagePixelActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .add(R.id.container, MainFragmentPixel().getInstance()).commit()
         }
+        Log.i("xxxxxxH", "CropImagePixelActivity")
     }
 
     override fun onRequestPermissionsResult(

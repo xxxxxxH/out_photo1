@@ -40,7 +40,6 @@ class FullScreenImageActivity : AppCompatActivity() {
     private val REQUEST_SETTINGS_PERMISSION = 102
     private val listPermissionsNeeded: ArrayList<String> = ArrayList()
 
-    var viewPager: ViewPager? = null
     var customPagerAdapter: CustomPagerAdapter? = null
     private val is_click = true
     private var al_my_photos = ArrayList<File>()
@@ -57,6 +56,7 @@ class FullScreenImageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_full_screen_image)
+        Log.i("xxxxxxH", "FullScreenImageActivity")
         System.gc()
         Runtime.getRuntime().gc()
 
@@ -77,8 +77,8 @@ class FullScreenImageActivity : AppCompatActivity() {
         }
         iv_delete_pager_items.setOnClickListener {
             try {
-                deleteImage(viewPager!!.currentItem)
-                dbHelper!!.deleteDrawDetails(al_my_photos[viewPager!!.currentItem].toString())
+                deleteImage(viewpager!!.currentItem)
+                dbHelper!!.deleteDrawDetails(al_my_photos[viewpager!!.currentItem].toString())
             } catch (e: java.lang.Exception) {
                 e.printStackTrace()
             }
@@ -90,7 +90,7 @@ class FullScreenImageActivity : AppCompatActivity() {
                     share.setPackage("com.instagram.android")
                     share.putExtra(
                         Intent.EXTRA_STREAM,
-                        Uri.fromFile(al_my_photos[viewPager!!.currentItem])
+                        Uri.fromFile(al_my_photos[viewpager!!.currentItem])
                     )
                     share.putExtra(
                         Intent.EXTRA_TEXT, """Make more pics with app link 
@@ -129,7 +129,7 @@ class FullScreenImageActivity : AppCompatActivity() {
                     share.setPackage("com.facebook.katana")
                     share.putExtra(
                         Intent.EXTRA_STREAM,
-                        Uri.fromFile(al_my_photos[viewPager!!.currentItem])
+                        Uri.fromFile(al_my_photos[viewpager!!.currentItem])
                     )
                     //            Share.putExtra(Intent.EXTRA_TEXT, "Make more pics with app link \n https://play.google.com/store/apps/details?id=" + FullScreenImageActivity.this.getPackageName());
                     share.type = "image/jpeg"
@@ -166,7 +166,7 @@ class FullScreenImageActivity : AppCompatActivity() {
                 intent.putExtra(Intent.EXTRA_SUBJECT, resources.getString(R.string.app_name))
                 intent.putExtra(
                     Intent.EXTRA_STREAM,
-                    Uri.fromFile(al_my_photos[viewPager!!.currentItem])
+                    Uri.fromFile(al_my_photos[viewpager!!.currentItem])
                 )
                 intent.putExtra(
                     Intent.EXTRA_TEXT, """Make more pics with app link 
@@ -198,7 +198,7 @@ class FullScreenImageActivity : AppCompatActivity() {
                     )
                     share.putExtra(
                         Intent.EXTRA_STREAM,
-                        Uri.fromFile(al_my_photos[viewPager!!.currentItem])
+                        Uri.fromFile(al_my_photos[viewpager!!.currentItem])
                     )
                     startActivity(Intent.createChooser(share, "Select"))
                 } else Toast.makeText(
@@ -222,7 +222,7 @@ class FullScreenImageActivity : AppCompatActivity() {
                 )
                 intent.putExtra(
                     Intent.EXTRA_STREAM,
-                    Uri.fromFile(al_my_photos[viewPager!!.currentItem])
+                    Uri.fromFile(al_my_photos[viewpager!!.currentItem])
                 )
                 startActivity(Intent.createChooser(intent, "Share Picture"))
             } catch (e: java.lang.Exception) {
@@ -244,16 +244,16 @@ class FullScreenImageActivity : AppCompatActivity() {
 
     fun handleFav() {
         if (iv_fav.visibility == View.VISIBLE) {
-            Share.image_path = al_my_photos[viewPager!!.currentItem].toString()
+            Share.image_path = al_my_photos[viewpager!!.currentItem].toString()
             Share.SELECTED_BITMAP =
-                BitmapFactory.decodeFile(al_my_photos[viewPager!!.currentItem].toString())
+                BitmapFactory.decodeFile(al_my_photos[viewpager!!.currentItem].toString())
             // byte[] img = getBitmapAsByteArray(Share.SELECTED_BITMAP);
             val img: ByteArray? = null
             dbHelper!!.saveMessageData(img, Share.image_path)
             val count = dbHelper!!.GetRowCountofTable()
             Log.e("count", "" + count)
         } else {
-            Share.image_path = al_my_photos[viewPager!!.currentItem].toString()
+            Share.image_path = al_my_photos[viewpager!!.currentItem].toString()
             if (Share.Fragment.equals("FavouriteFragment", ignoreCase = true)) {
                 if (iv_unfav.visibility == View.VISIBLE) {
                     val builder =
@@ -265,16 +265,16 @@ class FullScreenImageActivity : AppCompatActivity() {
                         ) { dialog, id ->
                             dbHelper!!.deleteDrawDetails(Share.image_path)
                             if (al_my_photos.size > 0) {
-                                al_my_photos.removeAt(viewPager!!.currentItem)
-                                val current_page = viewPager!!.currentItem
+                                al_my_photos.removeAt(viewpager!!.currentItem)
+                                val current_page = viewpager!!.currentItem
                                 if (al_my_photos.size == 0) {
                                     tv_current_page.text = "00" + " / "
                                     onBackPressed()
                                 }
                                 customPagerAdapter!!.notifyDataSetChanged()
-                                viewPager!!.adapter = customPagerAdapter
-                                viewPager!!.currentItem = current_page - 1
-                                displayMetaInfo(viewPager!!.currentItem)
+                                viewpager!!.adapter = customPagerAdapter
+                                viewpager!!.currentItem = current_page - 1
+                                displayMetaInfo(viewpager!!.currentItem)
                             }
                             val data = dbHelper!!.getSingleFavData(Share.image_path)
                             if (Share.image_path.equals(data, ignoreCase = true)) {
@@ -356,11 +356,11 @@ class FullScreenImageActivity : AppCompatActivity() {
                 val isDeleted = al_my_photos[position].delete()
                 Log.e("TAG", "isDeleted:$isDeleted")
                 if (isDeleted) {
-                    if (al_my_photos[viewPager!!.currentItem].exists()) {
-                        al_my_photos[viewPager!!.currentItem].delete()
+                    if (al_my_photos[viewpager!!.currentItem].exists()) {
+                        al_my_photos[viewpager!!.currentItem].delete()
                         //
                     }
-                    val f = File(al_my_photos[viewPager!!.currentItem].toString())
+                    val f = File(al_my_photos[viewpager!!.currentItem].toString())
                     if (f.exists()) {
                         Log.e("TAG", "img:$f")
                         f.delete()
@@ -370,9 +370,9 @@ class FullScreenImageActivity : AppCompatActivity() {
                         onBackPressed()
                     }
                     customPagerAdapter!!.notifyDataSetChanged()
-                    viewPager!!.adapter = customPagerAdapter
-                    viewPager!!.currentItem = position - 1
-                    displayMetaInfo(viewPager!!.currentItem)
+                    viewpager!!.adapter = customPagerAdapter
+                    viewpager!!.currentItem = position - 1
+                    displayMetaInfo(viewpager!!.currentItem)
                 } else {
                 }
             }
@@ -426,17 +426,18 @@ class FullScreenImageActivity : AppCompatActivity() {
     }
 
     private fun setReffrance() {
+        customPagerAdapter = CustomPagerAdapter(this, al_my_photos)
         val height = (applicationContext.resources.displayMetrics.heightPixels * 0.11).toInt()
         ll_pager_indicator.layoutParams.height = height
         favorite_layout.layoutParams.height = height
-        viewPager!!.adapter = customPagerAdapter
+        viewpager!!.adapter = customPagerAdapter
         if (intent.extras != null && intent.extras!!.containsKey("avairy")) {
-            viewPager!!.currentItem = 0
+            viewpager!!.currentItem = 0
         } else {
             if (Share.Fragment.equals("MyPhotosFragment", ignoreCase = true)) {
-                viewPager!!.currentItem = Share.my_photos_position
+                viewpager!!.currentItem = Share.my_photos_position
             } else {
-                viewPager!!.currentItem = Share.my_favourite_position
+                viewpager!!.currentItem = Share.my_favourite_position
             }
             Log.e("TAG", "Share.my_photos_position=>" + Share.my_photos_position)
         }
@@ -455,7 +456,7 @@ class FullScreenImageActivity : AppCompatActivity() {
             tv_total_page.text = (al_my_photos.size + 1).toString()
         }
 
-        viewPager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        viewpager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
@@ -498,7 +499,7 @@ class FullScreenImageActivity : AppCompatActivity() {
 
     private fun check_like_data() {
         try {
-            Share.image_path = al_my_photos[viewPager!!.currentItem].toString()
+            Share.image_path = al_my_photos[viewpager!!.currentItem].toString()
             val data = dbHelper!!.getSingleFavData(Share.image_path)
             if (Share.image_path.equals(data, ignoreCase = true)) {
                 //  iv_fav.setChecked(true);

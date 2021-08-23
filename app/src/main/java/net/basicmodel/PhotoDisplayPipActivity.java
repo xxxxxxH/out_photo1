@@ -304,7 +304,7 @@ public class PhotoDisplayPipActivity extends AppCompatActivity implements View.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_display);
-
+        Log.i("xxxxxxH", "PhotoDisplayPipActivity");
         if (Share.RestartApp(this)) {
 
             activity = PhotoDisplayPipActivity.this;
